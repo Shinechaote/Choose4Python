@@ -222,28 +222,13 @@ def isGameOver(position: int) -> bool:
 	# Nothing found
 	return False
 
-
-"""
-Calculates score
-"""
-def evaluateBoard(self,player: int, board: int, mask: int) -> int:
-	if(isGameOver(board)):
-		return 22 - bin(board).count("1")
-	elif(isGameOver(board ^mask)):
-		return 22 - bin(board ^ mask).count("1")
-	elif bin( mask).count("1") == 42:
-		return 0
-	else:
-		return -1
-
-
 board_in = [
 	[0, 0, 0, 0, 0, 0, 0,],
-	[0, 0, 0, 2, 0, 0, 0,],
-	[0, 0, 1, 1, 0, 0, 0,],
-	[0, 0, 2, 1, 2, 0, 0,],
-	[0, 0, 2, 2, 1, 0, 0,],
-	[0, 0, 2, 1, 1, 2, 0,],
+	[0, 0, 0, 0, 0, 0, 0,],
+	[0, 0, 0, 0, 0, 0, 0,],
+	[0, 0, 0, 0, 0, 0, 0,],
+	[0, 0, 0, 0, 2, 2, 0,],
+	[0, 0, 0, 0, 1, 1, 0,],
 ]
 for i in range(len(board_in)):
 	for j in range(len(board_in[i])):
@@ -268,6 +253,7 @@ while(not isGameOver(position) and not isGameOver(position^mask) and not draw):
 
 	draw = True
 	for i in range(width):
-		if(board_in[0][i] != EMPTY):
+		if(board_in[0][i] == -1):
 			draw = False
+print(cur_player, isGameOver(position), isGameOver(position^mask), draw)
 printBoard(board_in)	
